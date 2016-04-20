@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-lg-4 col-lg-offset-4 well">
+    <h3 class="text-center">New community</h3>
+    <br>
+    <%= form_for(@community) do |f| %>
+      <% if @community.errors.any? %>
+        <div class="alert alert-danger alert-dismissable">
+          <%= @community.errors.full_messages.first %>
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        </div>
+      <% end %>
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control', autofocus: true, placeholder: 'Community Name' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :about %>
+        <%= f.text_field :about, class: 'form-control', placeholder: 'Description' %>
+      </div>
+      <div class="actions">
+        <%= f.submit 'Create Community', class: 'btn btn-success' %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col-lg-6 col-lg-offset-3">
+    <div class="well">
+      <h3>Edit Community</h3>
+      <%= form_for(@community) do |f| %>
+        <div class="form-group">
+          <%= f.label :avatar %>
+          <br>
+          <%= render 'shared/community_avatar', community: @community %>
+          <br>
+          <br>
+          <%= f.file_field :avatar %>
+        </div>
+        <div class="form-group">
+          <%= f.label :cover %>
+          <br>
+          <%= render 'shared/community_cover', community: @community %>
+          <br>
+          <%= f.file_field :cover %>
+        </div>
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, placeholder: 'Name', class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :about %>
+          <%= f.text_area :about, placeholder: 'About', class: 'form-control' %>
+        </div>
+        <div class="actions">
+          <%= submit_tag 'Update', class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

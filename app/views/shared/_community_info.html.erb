@@ -1,0 +1,11 @@
+<div id="user-info" class="well">
+  <div class="text-center">
+    <%= render 'shared/community_avatar', community: @community %><br>
+    <h5><%= link_to @community.name, @community %></h5>
+  </div>
+  <h5>
+    <%= fa_icon 'shield' %>
+    <%= pluralize(@community.posts_count, 'post') %>
+  </h5>
+
+</div>
