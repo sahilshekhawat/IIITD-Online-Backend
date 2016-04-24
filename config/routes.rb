@@ -40,6 +40,8 @@ Rails.application.routes.draw do
         end
       end
       resources :events
+      resources :follows
+      resources :likes
     end
   end
 
