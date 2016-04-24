@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
 
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   resources :communities do
     member do
-      get :all
       get :followers
       get :deactivate
+    end
+
+    collection do
+      get :all
     end
   end
 
@@ -19,6 +24,18 @@ Rails.application.routes.draw do
     end
   end
   resources :events, except: [:edit, :update]
+
+  namespace :api do
+    namespace :v1, defaults: {format: :json} do
+      resources :communities
+      resources :posts
+      devise_scope :user do
+        post 'registrations' => 'registrations#create', :as => 'register'
+        post 'sessions' => 'sessions#create', :as => 'login'
+        delete 'sessions' => 'sessions#destroy', :as => 'logout'
+      end
+    end
+  end
 
   authenticated :user do
     root to: 'home#index', as: 'home'

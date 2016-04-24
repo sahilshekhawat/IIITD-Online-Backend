@@ -38,10 +38,12 @@ group :production do
 end
 
 gem 'devise'
+gem 'devise-token_authenticatable'
 gem 'carrierwave'
 gem 'friendly_id', '~> 5.0.0'
 
 gem 'will_paginate', '~> 3.0.6'
+gem "kaminari"
 gem 'public_activity'
 
 gem 'acts_as_votable', '~> 0.10.0'
@@ -52,6 +54,9 @@ gem 'counter_culture', '~> 0.1.33'
 gem 'faker'
 gem 'populator'
 gem 'auto_html','~>1.6.4'
+gem 'fastapi'
+gem 'activeadmin', '~> 1.0.0.pre2'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

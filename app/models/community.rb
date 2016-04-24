@@ -18,4 +18,16 @@ class Community < ActiveRecord::Base
   friendly_id :name, use: [:slugged, :finders]
 
   self.per_page = 10
+
+  # A "standard interface" is a list of user-exposed fields for the endpoint
+ fastapi_standard_interface [
+   :id,
+   :name,
+   :about,
+   :user_id,
+   :posts_count,
+   :avatar,
+   :cover,
+   :slug
+ ]
 end

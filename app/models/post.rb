@@ -27,4 +27,16 @@ class Post < ActiveRecord::Base
     link target: '_blank', rel: 'nofollow'
     simple_format
   end
+
+  fastapi_standard_interface [
+    :id,
+    :content,
+    :user_id,
+    :attachment,
+    :cached_votes_up,
+    :comments_count,
+    :content_html,
+    :community_id
+  ]
+
 end

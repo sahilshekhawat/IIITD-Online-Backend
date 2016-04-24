@@ -6,10 +6,13 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
-    :recoverable, :rememberable, :trackable, :validatable
+    :recoverable, :rememberable, :trackable, :validatable,
+    :token_authenticatable
   acts_as_voter
   acts_as_follower
   acts_as_followable
+
+  before_save :ensure_authentication_token
 
   has_many :posts
   has_many :comments
@@ -24,4 +27,23 @@ class User < ActiveRecord::Base
 
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
+
+  fastapi_standard_interface [
+    :id,
+    :name,
+    :email,
+    :about,
+    :posts_count,
+    :avatar,
+    :cover,
+    :phone_number,
+    :dob,
+    :sex,
+    :slug
+  ]
+
+
+  def skip_confirmation
+    self.confirmed_at = Time.now
+  end
 end
