@@ -14,4 +14,14 @@ class Event < ActiveRecord::Base
   validates_presence_of :name
   validates_presence_of :when
   validates_presence_of :user
+
+  fastapi_standard_interface [
+    :name,
+    :when,
+    :user_id,
+    :cached_votes_up,
+    :comments_count,
+    :community_id
+  ]
+
 end

@@ -34,6 +34,12 @@ Rails.application.routes.draw do
         post 'sessions' => 'sessions#create', :as => 'login'
         delete 'sessions' => 'sessions#destroy', :as => 'logout'
       end
+      resources :users do
+        collection do
+          get :getcurrentuser
+        end
+      end
+      resources :events
     end
   end
 

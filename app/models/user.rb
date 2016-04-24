@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
     :token_authenticatable
   acts_as_voter
   acts_as_follower
-  acts_as_followable
+  #acts_as_followable
 
   before_save :ensure_authentication_token
 
